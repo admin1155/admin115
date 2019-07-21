@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>banner</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="container">
+    <div class="menu">
+        <a href="#" id="menu"><img class="menu-img" src="images/menu.jpg" alt=""></a>
+    </div>
+    <ul class="banners">
+        <li class="banner">
+            <a href="#" id="banner1"><img class="banner-img" src="images/banner1.jpg" alt=""></a>
+        </li>
+        <li class="banner">
+            <a href="#" id="banner2"><img class="banner-img" src="images/banner2.jpg" alt=""></a>
+        </li>
+        <li class="banner">
+            <a href="#" id="banner3"><img class="banner-img" src="images/banner3.jpg" alt=""></a>
+        </li>
+        <li class="banner">
+            <a href="#" id="banner4"><img class="banner-img" src="images/banner4.jpg" alt=""></a>
+        </li>
+    </ul>
+    <div class="footer">
+        <div class="traffic">联系方式：<span id="tel"></span> &nbsp;&nbsp;|&nbsp;&nbsp;访问量：<span id="traffic"></span></div>
+    </div>
+</div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    let baseUrl = `http://127.0.0.1`;
+
+    function get(url) {
+        return new Promise((resolve, reject) => {
+            $.get(url, function (data) {
+                resolve(data)
+            })
+        })
+    }
+
+    $(function () {
+        get(baseUrl + '/banner-back/welcome/updateTraffic')
+            .then(res => {
+                return get(baseUrl + '/banner-back/welcome/getAllUri')
+            }).then(res => {
+            let data = JSON.parse(res);
+            $('#menu').attr('href', data[0].uri);
+            $('#banner1').attr('href', data[1].uri);
+            $('#banner2').attr('href', data[2].uri);
+            $('#banner3').attr('href', data[3].uri);
+            $('#banner4').attr('href', data[4].uri);
+            $('#tel').text(data[5].uri);
+            return get(baseUrl + '/banner-back/welcome/getTraffic');
+        }).then(res => {
+            let data = JSON.parse(res);
+            $('#traffic').text(data.traffic);
+        })
+    })
+</script>
+</body>
+</html>
