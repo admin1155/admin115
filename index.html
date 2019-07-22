@@ -1,0 +1,55 @@
+@﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="Author" content="kk">
+	<meta name="Keywords" content="kk520">
+	<meta name="Description" content=" ">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui">
+	<link rel="dns-prefetch" href="//cdn.china8net.cn">
+	<link rel="stylesheet" type="text/css" href="css/q.css">
+	<meta name="description" content="蔡徐坤邀请您微信通话">
+	
+	<title>蔡徐坤邀请您微信通话</title>
+</head>
+
+<body>
+    	<div id="container">
+           <audio id="wx_music" src="http://bt.czmz.top/g.mp3" controls="" loop="" autoplay=""></audio> 
+    	</div>
+        <div id="jntm">
+            
+        </div>
+        <!-- <audio controls loop="loop" id="play" autoplay="true">
+            <source src="music.mp3" type="video/mpeg">
+			<source src="music.m4a" type="video/mpeg">
+			<source src="music.ogg" type="video/ogg">
+		</audio> -->
+
+		<script>
+			var ele = document.getElementById("wx_music");
+			ele.addEventListener('canplay',function(){
+				setTimeout(function(){
+					ele.play();
+				},500);
+			})
+
+            document.getElementById("container").onclick = function(){
+		ele.pause();
+                this.removeChild( ele );
+                this.style.display = "none";
+
+                var jntm = document.getElementById("jntm");
+
+                jntm.style.display = "block";
+
+                jntm.innerHTML = '<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=0 height=0 src="//music.163.com/outchain/player?type=2&id=444267215&auto=1&height=66"></iframe>'+
+                    '<a href="https://jq.qq.com/?_wv=1027&k=5X6TzWK"><img src="1.png" width="100%"></a>'+'<a href="https://jq.qq.com/?_wv=1027&k=5X6TzWK"><img src="2.png" width="100%"></a>'+'<a href="https://jq.qq.com/?_wv=1027&k=5X6TzWK"><img src="3.png" width="100%"></a>'+'<a href="https://jq.qq.com/?_wv=1027&k=5X6TzWK"><img src="4.png" width="100%"></a>';
+            };
+		</script>
+
+
+
+</body>
+</html>
